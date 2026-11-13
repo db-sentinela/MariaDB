@@ -2,7 +2,7 @@
 
 Parte do **DB Sentinel Database Procedures Framework**: biblioteca técnica de procedimentos operacionais padronizados (SOPs) para administração de bancos de dados corporativos em ambientes de missão crítica.
 
-Este repositório cobre **MariaDB 12** em topologia de alta disponibilidade com **Galera Cluster, HAProxy e Keepalived**, além de estratégias de troubleshooting, backup/restore e tuning avançado. Todos os procedimentos são independentes de clientes, não contêm dados de ambientes reais e foram rigorosamente **executados, testados e homologados em laboratório real** antes da publicação.
+Este repositório cobre **MariaDB 12** em topologia de alta disponibilidade com **Galera Cluster, HAProxy e Keepalived**, além de estratégias de troubleshooting, backup/restore, tuning de infraestrutura e otimização avançada de queries. Todos os procedimentos são independentes de clientes, não contêm dados de ambientes reais e foram rigorosamente **executados, testados e homologados em laboratório real** antes da publicação.
 
 ---
 
@@ -37,7 +37,7 @@ Este repositório cobre **MariaDB 12** em topologia de alta disponibilidade com 
 | [PITR via Binary Log](Backup&Restore/backup-restore-pitr-binlog.md) | Point-in-Time Recovery: replay de binlogs até o segundo exato anterior a desastres | Validado |
 | [Cenários de recuperação de desastres](Backup&Restore/backup-restore-cenarios-recuperacao.md) | Playbook passo a passo para perda de tabela, corrupção de partição e falha de storage | Validado |
 
-### 4. [Tuning & Otimização de Performance](Tuning/README.md)
+### 4. [Tuning de Instância & Otimização de Consultas](Tuning/README.md)
 | Procedimento | Descrição | Status |
 |---|---|---|
 | [01 — InnoDB Buffer Pool & Memória](Tuning/01-tuning-innodb-buffer-pool-memoria.md) | Dimensionamento, Hit Ratio real, Dirty Pages flushing, resize dinâmico e dump/load de cache | Validado |
@@ -46,6 +46,10 @@ Este repositório cobre **MariaDB 12** em topologia de alta disponibilidade com 
 | [04 — Galera: Replicação e Flow Control](Tuning/04-tuning-galera-concorrencia-flow-control.md) | Paralelismo (`wsrep_slave_threads`), ajuste de Flow Control (`gcs.fc_limit`) e dimensionamento de Gcache | Validado |
 | [05 — Plugins de Observabilidade (QRT e MDL)](Tuning/05-tuning-plugins-observabilidade-query-response-time.md) | Profiling de baixa intrusão com `query_response_time` (p50/p95/p99) e detecção de filas de metadados | Validado |
 | [06 — Tabelas Temporárias (Aria) e RAM Global](Tuning/06-tuning-tabelas-temporarias-e-memoria-global.md) | Tabelas temporárias internas, motor Aria em substituição ao MyISAM e fórmula contra o OOM Killer | Validado |
+| [07 — Análise Profunda com EXPLAIN e ANALYZE JSON](Tuning/07-tuning-queries-explain-analyze-json.md) | Telemetria real de execução: tempo de engine (`r_table_time_ms`), linhas lidas e páginas no buffer | Validado |
+| [08 — Índices Compostos, Leftmost Prefix e ICP](Tuning/08-tuning-queries-indices-compostos-e-icp.md) | Regras da B-Tree, Index Condition Pushdown (`Using index condition`) e prevenção de supressão por funções | Validado |
+| [09 — Índices de Cobertura, Filesort e Paginação](Tuning/09-tuning-queries-covering-index-e-ordenacao.md) | Covering Index (`Using index`), eliminação de `Using filesort` e Keyset Pagination 450x mais rápida | Validado |
+| [10 — Otimização de Joins, MRR e Optimizer Switch](Tuning/10-tuning-queries-joins-mrr-e-optimizer-switch.md) | Tuning de junções, Multi-Range Read (I/O sequencial), ordem de loops e flags do `optimizer_switch` | Validado |
 
 ---
 
@@ -97,7 +101,11 @@ MariaDB/
     ├── 03-tuning-redo-log-io-flushing.md
     ├── 04-tuning-galera-concorrencia-flow-control.md
     ├── 05-tuning-plugins-observabilidade-query-response-time.md
-    └── 06-tuning-tabelas-temporarias-e-memoria-global.md
+    ├── 06-tuning-tabelas-temporarias-e-memoria-global.md
+    ├── 07-tuning-queries-explain-analyze-json.md
+    ├── 08-tuning-queries-indices-compostos-e-icp.md
+    ├── 09-tuning-queries-covering-index-e-ordenacao.md
+    └── 10-tuning-queries-joins-mrr-e-optimizer-switch.md
 ```
 
 ---

@@ -51,6 +51,15 @@ Este repositório cobre **MariaDB 12** em topologia de alta disponibilidade com 
 | [09 — Índices de Cobertura, Filesort e Paginação](Tuning/09-tuning-queries-covering-index-e-ordenacao.md) | Covering Index (`Using index`), eliminação de `Using filesort` e Keyset Pagination 450x mais rápida | Validado |
 | [10 — Otimização de Joins, MRR e Optimizer Switch](Tuning/10-tuning-queries-joins-mrr-e-optimizer-switch.md) | Tuning de junções, Multi-Range Read (I/O sequencial), ordem de loops e flags do `optimizer_switch` | Validado |
 
+### 5. [Observabilidade com PMM 3](Observability/README.md)
+| Procedimento | Descrição | Status |
+|---|---|---|
+| [01 — Arquitetura e Instalação do PMM Client](Observability/01-observabilidade-pmm-instalacao-e-cliente.md) | Arquitetura PMM Server/Client, instalação do `pmm-client` e integração com pmm-admin | Validado |
+| [02 — Monitoramento de Instância MariaDB Single](Observability/02-observabilidade-mariadb-single-instance.md) | Criação do usuário `pmm` com menor privilégio, Performance Schema e QAN em instância única | Validado |
+| [03 — Monitoramento de Galera Cluster no PMM](Observability/03-observabilidade-galera-cluster-pmm.md) | Registro correto dos nós Galera (bind-address real), métricas `wsrep_*` e cluster tagging | Validado |
+| [04 — Monitoramento Dual: HAProxy e Métricas de Orquestrador](Observability/04-observabilidade-orquestrador-haproxy-dual-monitoring.md) | Exporter nativo Prometheus do HAProxy 2.8+, serviço externo no PMM e métricas de balanceamento | Validado |
+| [05 — Dashboards, Filtros e Métricas-Chave no PMM](Observability/05-observabilidade-dashboards-filtros-e-metricas-chave.md) | Navegação em dashboards Grafana, filtros por cluster, alertas e uso do QAN para diagnóstico | Validado |
+
 ---
 
 ## Ambiente de Homologação
@@ -106,6 +115,13 @@ MariaDB/
     ├── 08-tuning-queries-indices-compostos-e-icp.md
     ├── 09-tuning-queries-covering-index-e-ordenacao.md
     └── 10-tuning-queries-joins-mrr-e-optimizer-switch.md
+└── Observability/
+    ├── README.md
+    ├── 01-observabilidade-pmm-instalacao-e-cliente.md
+    ├── 02-observabilidade-mariadb-single-instance.md
+    ├── 03-observabilidade-galera-cluster-pmm.md
+    ├── 04-observabilidade-orquestrador-haproxy-dual-monitoring.md
+    └── 05-observabilidade-dashboards-filtros-e-metricas-chave.md
 ```
 
 ---
